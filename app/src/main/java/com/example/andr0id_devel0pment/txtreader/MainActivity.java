@@ -1,6 +1,7 @@
 package com.example.andr0id_devel0pment.txtreader;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button citiesButton = findViewById(R.id.button);
         Button countriesButton = findViewById(R.id.button2);
-        final TextView textView = findViewById(R.id.textView);
 
         citiesButton.setOnClickListener(new View.OnClickListener() {
 
@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int FILE_NAME = R.raw.cities;
 
-
                 ArrayList<String> result = readFile(FILE_NAME);
-
-                textView.setText(result.get(0));
+                Intent citiesActivity = new Intent(getApplicationContext(),Cities.class);
+                citiesActivity.putExtra("data",result);
+                startActivity(citiesActivity);
 
 
             }
@@ -55,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
                 ArrayList<String> result = readFile(FILE_NAME);
 
-                textView.setText(result.get(0));
+                Intent countriesActivity = new Intent(getApplicationContext(),countries.class);
+                countriesActivity.putExtra("data",result);
+                startActivity(countriesActivity);
 
 
             }
